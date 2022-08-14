@@ -18,7 +18,7 @@ Pacelator = Pace + Calculator
 - 结果可分享为图片。
 - 开源。https://github.com/Likenttt/pacelator
 
-<!-- [<img height="75" width="200" src="./screenshots/google-play-badge.png" alt="Play Store"/>](https://play.google.com/store/apps/details?id=com.newrathon.pace_calculator) -->
+[<img height="75" width="200" src="./screenshots/google-play-badge.png" alt="Play Store"/>](https://play.google.com/store/apps/details?id=com.newrathon.pace_calculator)
 
 ## 截图
 
