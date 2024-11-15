@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:macro_calculator/l10n/minimal_l10n.dart';
+import 'package:intl/intl.dart';
 
 class RunSplit {
   final String splitNo;
@@ -115,7 +116,8 @@ class ResultPage extends StatelessWidget {
     // screenshotContent.add();
     var unit8List = await key.capture();
     String tempPath = (await getTemporaryDirectory()).path;
-    File file = File('$tempPath/img.png');
+    String timestamp = DateFormat('yyyy-MMdd-HHmmss').format(DateTime.now());
+    File file = File('$tempPath/img_$timestamp.png');
     await file.writeAsBytes(unit8List!);
     await Share.shareXFiles([XFile(file.path)]);
   }

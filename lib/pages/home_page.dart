@@ -13,7 +13,6 @@ import 'package:macro_calculator/widgets/tile.dart';
 import 'package:provider/provider.dart';
 import 'package:macro_calculator/l10n/minimal_l10n.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:day_night_time_picker/lib/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -120,22 +119,19 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          Container(
-                            child: TabBar(
-                              labelColor: const Color(0xff6750a4),
-                              indicatorColor: const Color(0xff6750a4),
-                              unselectedLabelColor: Colors.grey,
-                              onTap: (value) =>
-                                  dataController.setTabMode(value),
-                              tabs: [
-                                Tab(
-                                    text: MinimalLocalizations.of(context)
-                                        .estimateFinishTime),
-                                Tab(
-                                    text:
-                                        '${MinimalLocalizations.of(context).pace}(${MinimalLocalizations.of(context).getL10nByKey(dataController.unit!.unit3)})')
-                              ],
-                            ),
+                          TabBar(
+                            labelColor: const Color(0xff6750a4),
+                            indicatorColor: const Color(0xff6750a4),
+                            unselectedLabelColor: Colors.grey,
+                            onTap: (value) => dataController.setTabMode(value),
+                            tabs: [
+                              Tab(
+                                  text: MinimalLocalizations.of(context)
+                                      .estimateFinishTime),
+                              Tab(
+                                  text:
+                                      '${MinimalLocalizations.of(context).pace}(${MinimalLocalizations.of(context).getL10nByKey(dataController.unit!.unit3)})')
+                            ],
                           ),
                           Container(
                               height: 240, //height of TabBarView
