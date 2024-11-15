@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class GpxToCsvPage extends StatefulWidget {
   const GpxToCsvPage({super.key});
@@ -29,7 +30,7 @@ class _GpxToCsvPageState extends State<GpxToCsvPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GPX to CSV'),
+        title: Text('gpxToCsv'.tr()),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -39,18 +40,18 @@ class _GpxToCsvPageState extends State<GpxToCsvPage> {
             ElevatedButton.icon(
               onPressed: _pickFile,
               icon: const Icon(Icons.file_upload),
-              label: const Text('Select GPX File'),
+              label: Text('selectGpxFile'.tr()),
             ),
             if (selectedFilePath != null) ...[
               const SizedBox(height: 16),
-              Text('Selected file: $selectedFilePath'),
+              Text('selectedFile'.tr(args: [selectedFilePath ?? ''])),
               const SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: () {
                   // TODO: 实现转换功能
                 },
                 icon: const Icon(Icons.transform),
-                label: const Text('Convert to CSV'),
+                label: Text('convertToCsv'.tr()),
               ),
             ],
           ],

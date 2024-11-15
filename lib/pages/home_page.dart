@@ -145,6 +145,20 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pop(context);
                 },
               ),
+              ListTile(
+                leading: const Icon(Icons.map),
+                title: Text('gpxToTcx'.tr()),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.map),
+                title: Text('gpxCoordinateConverter'.tr()),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
             ],
           ),
         );
