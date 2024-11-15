@@ -4,7 +4,7 @@ import 'package:macro_calculator/utils/enums.dart';
 
 import 'package:macro_calculator/utils/textStyles.dart';
 import 'package:macro_calculator/widgets/tile.dart';
-import 'package:macro_calculator/l10n/minimal_l10n.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SplitTile extends StatelessWidget {
   const SplitTile({
@@ -60,20 +60,19 @@ class SplitTile extends StatelessWidget {
       children: <Widget>[
         TableCell(
           verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Text(MinimalLocalizations.of(context).lapNo,
+          child: Text('lapNo'.tr(),
               style: MyTextStyles(context).resultCardUnit,
               textAlign: TextAlign.center),
         ),
         TableCell(
           verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Text(MinimalLocalizations.of(context).lapTime,
+          child: Text('lapTime'.tr(),
               style: MyTextStyles(context).resultCardUnit,
               textAlign: TextAlign.center),
         ),
         TableCell(
           verticalAlignment: TableCellVerticalAlignment.middle,
-          child: Text(
-              '${MinimalLocalizations.of(context).lapDistance}(${unit.unit2})',
+          child: Text('${'lapDistance'.tr()}(${unit.unit2})',
               style: MyTextStyles(context).resultCardUnit,
               textAlign: TextAlign.center),
         ),

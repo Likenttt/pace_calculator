@@ -11,8 +11,8 @@ import 'package:macro_calculator/controllers/data_controller.dart';
 import 'package:macro_calculator/utils/enums.dart';
 import 'package:macro_calculator/widgets/my_drop_down_menu.dart';
 import 'package:macro_calculator/widgets/slider.dart';
-import 'package:macro_calculator/l10n/minimal_l10n.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class PaceCalculatorPage extends StatefulWidget {
   const PaceCalculatorPage({super.key});
@@ -28,12 +28,10 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(MinimalLocalizations.of(context).title),
+        title: Text('title'.tr()),
         actions: [
           IconButton(
-            tooltip: isThemeDark(context)
-                ? MinimalLocalizations.of(context).lightMode
-                : MinimalLocalizations.of(context).darkMode,
+            tooltip: isThemeDark(context) ? 'lightMode'.tr() : 'darkMode'.tr(),
             icon: Icon(
               isThemeDark(context) ? EvaIcons.sunOutline : EvaIcons.moonOutline,
             ),
@@ -52,7 +50,7 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  MinimalLocalizations.of(context).unit,
+                  'unit'.tr(),
                   style: MyTextStyles(context).cardTitle,
                 ),
                 MyDropDownMenu<DistanceUnit>(
@@ -64,7 +62,7 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  MinimalLocalizations.of(context).raceType,
+                  'raceType'.tr(),
                   style: MyTextStyles(context).cardTitle,
                 ),
                 MyDropDownMenu<RaceType>(
@@ -78,7 +76,7 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      MinimalLocalizations.of(context).distance,
+                      'distance'.tr(),
                       style: MyTextStyles(context).cardTitle,
                     ),
                     Row(
@@ -120,12 +118,10 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                             unselectedLabelColor: Colors.grey,
                             onTap: (value) => dataController.setTabMode(value),
                             tabs: [
-                              Tab(
-                                  text: MinimalLocalizations.of(context)
-                                      .estimateFinishTime),
+                              Tab(text: 'estimateFinishTime'.tr()),
                               Tab(
                                   text:
-                                      '${MinimalLocalizations.of(context).pace}(${MinimalLocalizations.of(context).getL10nByKey(dataController.unit!.unit3)})')
+                                      '${'pace'.tr()}(${dataController.unit!.unit3.tr()})')
                             ],
                           ),
                           Container(
@@ -155,11 +151,8 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                                     isOnChangeValueMode: true,
                                     accentColor: const Color(0xff6750a4),
                                     maxHour: 23,
-                                    hourLabel: MinimalLocalizations.of(context)
-                                        .hourLabel,
-                                    minuteLabel:
-                                        MinimalLocalizations.of(context)
-                                            .minuteLabel,
+                                    hourLabel: 'hourLabel'.tr(),
+                                    minuteLabel: 'minuteLabel'.tr(),
                                     is24HrFormat: true,
                                     focusMinutePicker: true,
                                     dialogInsetPadding:
@@ -190,11 +183,8 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                                     isOnChangeValueMode: true,
                                     accentColor: const Color(0xff6750a4),
                                     maxHour: 10,
-                                    hourLabel: MinimalLocalizations.of(context)
-                                        .minuteLabel,
-                                    minuteLabel:
-                                        MinimalLocalizations.of(context)
-                                            .secondsLabel,
+                                    hourLabel: 'minuteLabel'.tr(),
+                                    minuteLabel: 'secondsLabel'.tr(),
                                     is24HrFormat: true,
                                     focusMinutePicker: true,
                                     dialogInsetPadding:
@@ -212,10 +202,10 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
-        tooltip: MinimalLocalizations.of(context).calculate,
+        tooltip: 'calculate'.tr(),
         heroTag: 'fab',
         icon: const Icon(Icons.calculate),
-        label: Text(MinimalLocalizations.of(context).calculate),
+        label: Text('calculate'.tr()),
         onPressed: () {
           Calculator calculator = Calculator(
             unit: dataController.unit!,

@@ -2,7 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:macro_calculator/utils/enums.dart';
 import 'package:macro_calculator/utils/helpers.dart';
-import 'package:macro_calculator/l10n/minimal_l10n.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MyDropDownMenu<T> extends StatelessWidget {
   final T value;
@@ -21,12 +21,10 @@ class MyDropDownMenu<T> extends StatelessWidget {
 
   String getMenuText(T value, BuildContext context) {
     switch (T) {
-      case RaceType:
-        return MinimalLocalizations.of(context)
-            .getL10nByKey((value as RaceType).l10nKey);
-      case DistanceUnit:
-        return MinimalLocalizations.of(context)
-            .getL10nByKey((value as DistanceUnit).l10nKey);
+      case RaceType _:
+        return (value as RaceType).l10nKey.tr();
+      case DistanceUnit _:
+        return (value as DistanceUnit).l10nKey.tr();
       default:
         return _getText(value);
     }

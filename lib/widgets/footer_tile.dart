@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:macro_calculator/utils/textStyles.dart';
+
 import 'package:macro_calculator/widgets/tile.dart';
-import 'package:macro_calculator/l10n/minimal_l10n.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class FooterTile extends StatelessWidget {
   const FooterTile({
@@ -15,8 +15,7 @@ class FooterTile extends StatelessWidget {
       child: Column(
         children: [
           const Icon(Icons.run_circle_outlined),
-          Text(MinimalLocalizations.of(context).newrathon,
-              style: MyTextStyles(context).resultCardText),
+          Text('newrathon'.tr(), style: MyTextStyles(context).resultCardText),
         ],
       ),
     );

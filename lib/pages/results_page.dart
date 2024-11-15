@@ -9,8 +9,7 @@ import 'package:macro_calculator/widgets/split_tile.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:macro_calculator/l10n/minimal_l10n.dart';
-import 'package:intl/intl.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RunSplit {
   final String splitNo;
@@ -46,10 +45,7 @@ class ResultPage extends StatelessWidget {
     if (raceType == RaceType.tCustomized) {
       return distance;
     }
-    return [
-      MinimalLocalizations.of(context).getL10nByKey(raceType.l10nKey),
-      ''
-    ];
+    return [raceType.l10nKey.tr(), ''];
   }
 
   List<Widget> getScreenshotContent(BuildContext context) {
@@ -57,19 +53,16 @@ class ResultPage extends StatelessWidget {
     return [
       HeaderTile(title: '${distanceInfo[0]} ${distanceInfo[1]}'),
       ResultTile(
-        title: MinimalLocalizations.of(context).estimateFinishTime,
+        title: 'estimateFinishTime'.tr(),
         value: estimateTimeFinished,
-        units: MinimalLocalizations.of(context).hhMMSS,
+        units: 'hhMMSS'.tr(),
       ),
       ResultTile(
-        title: MinimalLocalizations.of(context).pace,
+        title: 'pace'.tr(),
         value: averagePace,
-        units: MinimalLocalizations.of(context).getL10nByKey(unit.unit3),
+        units: unit.unit3.tr(),
       ),
-      SplitTile(
-          unit: unit,
-          title: MinimalLocalizations.of(context).splits,
-          splits: splits),
+      SplitTile(unit: unit, title: 'splits'.tr(), splits: splits),
       const FooterTile()
     ];
   }
@@ -80,26 +73,24 @@ class ResultPage extends StatelessWidget {
     List<Widget> screenshotContent = getScreenshotContent(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(MinimalLocalizations.of(context).results),
+        title: Text('results'.tr()),
         leading: IconButton(
           icon: const Icon(EvaIcons.chevronLeft),
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: Container(
-        child: ListView(
-          padding: const EdgeInsets.all(6.0),
-          children: [
-            Screenshot(
-              controller: screenshotController,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: screenshotContent,
-              ),
+      body: ListView(
+        padding: const EdgeInsets.all(6.0),
+        children: [
+          Screenshot(
+            controller: screenshotController,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: screenshotContent,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         heroTag: 'fab',
