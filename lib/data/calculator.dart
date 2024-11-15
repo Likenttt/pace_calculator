@@ -30,7 +30,7 @@ class Calculator {
   }
 
   Map<String, int> getEtfTimeMap() {
-    if (this.tabMode == TabMode.estimatedFinishTime) {
+    if (tabMode == TabMode.estimatedFinishTime) {
       return {
         "hour": etf.hour,
         "minute": etf.minute,
@@ -53,7 +53,7 @@ class Calculator {
   }
 
   Map<String, int> getPace() {
-    if (this.tabMode == TabMode.estimatedFinishTime) {
+    if (tabMode == TabMode.estimatedFinishTime) {
       //etf/distance
       int etfInSecond = etf.hour * 3600 + etf.minute * 60;
       int speedInSecond =

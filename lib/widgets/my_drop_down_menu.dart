@@ -39,7 +39,7 @@ class MyDropDownMenu<T> extends StatelessWidget {
       child: DropdownButton<T>(
         borderRadius: BorderRadius.circular(12),
         value: value,
-        icon: Icon(EvaIcons.chevronDown),
+        icon: const Icon(EvaIcons.chevronDown),
         elevation: 3,
         underline: Container(
           height: 3,

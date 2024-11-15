@@ -25,7 +25,8 @@ class RunSplit {
 }
 
 class ResultPage extends StatelessWidget {
-  ResultPage({
+  const ResultPage({
+    super.key,
     required this.averagePace,
     required this.estimateTimeFinished,
     required this.splits,
@@ -68,7 +69,7 @@ class ResultPage extends StatelessWidget {
           unit: unit,
           title: MinimalLocalizations.of(context).splits,
           splits: splits),
-      FooterTile()
+      const FooterTile()
     ];
   }
 
@@ -78,15 +79,15 @@ class ResultPage extends StatelessWidget {
     List<Widget> screenshotContent = getScreenshotContent(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('${MinimalLocalizations.of(context).results}'),
+        title: Text(MinimalLocalizations.of(context).results),
         leading: IconButton(
-          icon: Icon(EvaIcons.chevronLeft),
+          icon: const Icon(EvaIcons.chevronLeft),
           onPressed: () => Navigator.pop(context),
         ),
       ),
       body: Container(
         child: ListView(
-          padding: EdgeInsets.all(6.0),
+          padding: const EdgeInsets.all(6.0),
           children: [
             Screenshot(
               controller: screenshotController,
@@ -102,7 +103,7 @@ class ResultPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         heroTag: 'fab',
         tooltip: 'share',
-        child: Icon(Icons.share_rounded),
+        child: const Icon(Icons.share_rounded),
         onPressed: () =>
             shareScreenshot(screenshotController, context, screenshotContent),
       ),
@@ -116,9 +117,6 @@ class ResultPage extends StatelessWidget {
     String tempPath = (await getTemporaryDirectory()).path;
     File file = File('$tempPath/img.png');
     await file.writeAsBytes(unit8List!);
-    await Share.shareFiles(
-      [file.path],
-      text: MinimalLocalizations.of(context).shareMessage,
-    );
+    await Share.shareXFiles([XFile(file.path)]);
   }
 }

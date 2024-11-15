@@ -18,6 +18,6 @@ ColorScheme colorScheme(BuildContext context) {
 
 extension stringExtension on String {
   String firstCapital() {
-    return "${this[0].toUpperCase()}${this.substring(1)}";
+    return "${this[0].toUpperCase()}${substring(1)}";
   }
 }

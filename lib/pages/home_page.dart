@@ -16,6 +16,8 @@ import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:day_night_time_picker/lib/constants.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.all(6.0),
+        padding: const EdgeInsets.all(6.0),
         children: [
           //! second container
           Tile(
@@ -66,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                   value: dataController.unit!,
                   onChanged: (value) => dataController.setUnit(value),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   MinimalLocalizations.of(context).raceType,
                   style: MyTextStyles(context).cardTitle,
@@ -120,8 +122,8 @@ class _HomePageState extends State<HomePage> {
                         children: <Widget>[
                           Container(
                             child: TabBar(
-                              labelColor: Color(0xff6750a4),
-                              indicatorColor: Color(0xff6750a4),
+                              labelColor: const Color(0xff6750a4),
+                              indicatorColor: const Color(0xff6750a4),
                               unselectedLabelColor: Colors.grey,
                               onTap: (value) =>
                                   dataController.setTabMode(value),
@@ -137,24 +139,30 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Container(
                               height: 240, //height of TabBarView
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   border: Border(
                                       top: BorderSide(
                                           color: Colors.grey, width: 0.5))),
                               child: TabBarView(children: <Widget>[
                                 Container(
-                                  child: createInlinePicker(
-                                    elevation: 1,
-                                    value: dataController
-                                        .getFinishedHourMinuteTime(),
+                                  child: showPicker(
+                                    isInlinePicker: true,
+                                    value: Time(
+                                      hour: dataController
+                                          .getFinishedHourMinuteTime()
+                                          .hour,
+                                      minute: dataController
+                                          .getFinishedHourMinuteTime()
+                                          .minute,
+                                    ),
                                     onChange: (value) =>
                                         dataController.setFinishedTime(value),
-                                    minuteInterval: MinuteInterval.ONE,
+                                    minuteInterval: TimePickerInterval.ONE,
                                     iosStylePicker: true,
                                     minHour: 0,
                                     displayHeader: false,
                                     isOnChangeValueMode: true,
-                                    accentColor: Color(0xff6750a4),
+                                    accentColor: const Color(0xff6750a4),
                                     maxHour: 23,
                                     hourLabel: MinimalLocalizations.of(context)
                                         .hourLabel,
@@ -163,24 +171,33 @@ class _HomePageState extends State<HomePage> {
                                             .minuteLabel,
                                     is24HrFormat: true,
                                     focusMinutePicker: true,
-                                    dialogInsetPadding: EdgeInsets.symmetric(
-                                        horizontal: 0.0, vertical: 0.0),
+                                    dialogInsetPadding:
+                                        const EdgeInsets.symmetric(
+                                            horizontal: 0.0, vertical: 0.0),
+                                    context: context,
                                   ),
                                 ),
                                 Container(
-                                  child: createInlinePicker(
-                                    elevation: 1,
-                                    value: dataController
-                                        .getPaceMinuteSecondTime(),
+                                  child: showPicker(
+                                    isInlinePicker: true,
+                                    value: Time(
+                                      hour: dataController
+                                          .getPaceMinuteSecondTime()
+                                          .hour,
+                                      minute: dataController
+                                          .getPaceMinuteSecondTime()
+                                          .minute,
+                                    ),
                                     onChange: (value) =>
                                         dataController.setPace(value),
-                                    minuteInterval: MinuteInterval.ONE,
+                                    minuteInterval: TimePickerInterval
+                                        .ONE, // Changed from MinuteInterval.ONE
                                     iosStylePicker: true,
                                     minHour: 0,
                                     blurredBackground: true,
                                     displayHeader: false,
                                     isOnChangeValueMode: true,
-                                    accentColor: Color(0xff6750a4),
+                                    accentColor: const Color(0xff6750a4),
                                     maxHour: 10,
                                     hourLabel: MinimalLocalizations.of(context)
                                         .minuteLabel,
@@ -189,8 +206,10 @@ class _HomePageState extends State<HomePage> {
                                             .secondsLabel,
                                     is24HrFormat: true,
                                     focusMinutePicker: true,
-                                    dialogInsetPadding: EdgeInsets.symmetric(
-                                        horizontal: 0.0, vertical: 0.0),
+                                    dialogInsetPadding:
+                                        const EdgeInsets.symmetric(
+                                            horizontal: 0.0, vertical: 0.0),
+                                    context: context,
                                   ),
                                 ),
                               ]))
@@ -204,7 +223,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton.extended(
         tooltip: MinimalLocalizations.of(context).calculate,
         heroTag: 'fab',
-        icon: Icon(Icons.calculate),
+        icon: const Icon(Icons.calculate),
         label: Text(MinimalLocalizations.of(context).calculate),
         onPressed: () {
           Calculator calculator = Calculator(

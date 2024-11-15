@@ -14,7 +14,7 @@ class FooterTile extends StatelessWidget {
     return Tile(
       child: Column(
         children: [
-          Icon(Icons.run_circle_outlined),
+          const Icon(Icons.run_circle_outlined),
           Text(MinimalLocalizations.of(context).newrathon,
               style: MyTextStyles(context).resultCardText),
         ],

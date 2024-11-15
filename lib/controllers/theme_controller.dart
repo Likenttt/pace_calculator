@@ -11,10 +11,11 @@ class ThemeController extends ChangeNotifier {
   }
 
   void toggleTheme() {
-    if (_themeMode == ThemeMode.dark)
+    if (_themeMode == ThemeMode.dark) {
       _themeMode = ThemeMode.light;
-    else
+    } else {
       _themeMode = ThemeMode.dark;
+    }
     box.put('themeMode', _themeMode.index);
     notifyListeners();
   }

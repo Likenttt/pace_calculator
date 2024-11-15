@@ -7,10 +7,10 @@ class Tile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(6.0),
+      margin: const EdgeInsets.all(6.0),
       child: Material(
         borderRadius: BorderRadius.circular(12.0),
-        color: Theme.of(context).colorScheme.surfaceVariant,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         elevation: 3,
         child: Padding(
           padding: const EdgeInsets.all(12.0),

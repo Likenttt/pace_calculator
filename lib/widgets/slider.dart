@@ -22,7 +22,7 @@ class MyCustomSlider extends StatelessWidget {
         // thumbColor: Theme.of(context).colorScheme.secondary,
         // activeTrackColor: Theme.of(context).colorScheme.secondary,
         // inactiveTrackColor: Theme.of(context).colorScheme.onSurfaceVariant,
-        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
+        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
         // overlayColor: Colors.red.withAlpha(32),
       ),
       child: Slider(
@@ -36,6 +36,7 @@ class MyCustomSlider extends StatelessWidget {
 }
 
 class CustomTrackShape extends RoundedRectSliderTrackShape {
+  @override
   Rect getPreferredRect({
     required RenderBox parentBox,
     Offset offset = Offset.zero,

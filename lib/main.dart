@@ -16,6 +16,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -29,23 +31,23 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateTitle: (BuildContext context) =>
                 MinimalLocalizations.of(context).title,
-            localizationsDelegates: [
+            localizationsDelegates: const [
               MinimalLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
             ],
-            supportedLocales: [
+            supportedLocales: const [
               Locale('en', ''), // English, no country code
               Locale('zh', ''), // Spanish, no country code
             ],
             home: HomePage(),
             theme: ThemeData(
-              scaffoldBackgroundColor: lightColorScheme.background,
+              scaffoldBackgroundColor: lightColorScheme.surface,
               useMaterial3: true,
               colorScheme: lightColorScheme,
             ),
             darkTheme: ThemeData(
-              scaffoldBackgroundColor: darkColorScheme.background,
+              scaffoldBackgroundColor: darkColorScheme.surface,
               useMaterial3: true,
               colorScheme: darkColorScheme,
             ),
