@@ -1,18 +1,11 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:macro_calculator/controllers/data_controller.dart';
 import 'package:macro_calculator/controllers/theme_controller.dart';
-import 'package:macro_calculator/pages/results_page.dart';
-import 'package:macro_calculator/utils/enums.dart';
+import 'package:macro_calculator/pages/pace_calculator_page.dart';
 import 'package:macro_calculator/utils/helpers.dart';
-import 'package:macro_calculator/utils/textStyles.dart';
-import 'package:macro_calculator/data/calculator.dart';
-import 'package:macro_calculator/widgets/my_drop_down_menu.dart';
-import 'package:macro_calculator/widgets/slider.dart';
-import 'package:macro_calculator/widgets/tile.dart';
 import 'package:provider/provider.dart';
 import 'package:macro_calculator/l10n/minimal_l10n.dart';
-import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:macro_calculator/pages/gpx_converter/gpx_to_csv_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,14 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    var dataController = Provider.of<DataController>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(MinimalLocalizations.of(context).title),
@@ -48,203 +34,131 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(6.0),
+      body: GridView.count(
+        padding: const EdgeInsets.all(16),
+        crossAxisCount: 2,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
         children: [
-          //! second container
-          Tile(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  MinimalLocalizations.of(context).unit,
-                  style: MyTextStyles(context).cardTitle,
-                ),
-                MyDropDownMenu<DistanceUnit>(
-                  items: DistanceUnit.values
-                      .where((u) => u != DistanceUnit.unknown)
-                      .toList(),
-                  value: dataController.unit!,
-                  onChanged: (value) => dataController.setUnit(value),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  MinimalLocalizations.of(context).raceType,
-                  style: MyTextStyles(context).cardTitle,
-                ),
-                MyDropDownMenu<RaceType>(
-                  items: dataController.unit == DistanceUnit.metric
-                      ? RaceType.metricTypes
-                      : RaceType.statuteTypes,
-                  value: dataController.raceType!,
-                  onChanged: (value) => dataController.setRaceType(value),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // Pace Calculator Tile
+          InkWell(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const PaceCalculatorPage()),
+            ),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Icon(Icons.timer, size: 48),
+                    const SizedBox(height: 8),
                     Text(
-                      MinimalLocalizations.of(context).distance,
-                      style: MyTextStyles(context).cardTitle,
+                      'Pace Calculator',
+                      style: Theme.of(context).textTheme.titleMedium,
+                      textAlign: TextAlign.center,
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          dataController.distanceFormatted()[0],
-                          style: MyTextStyles(context).homeCardValue,
-                        ),
-                        Text(
-                          dataController.distanceFormatted()[1],
-                          style: MyTextStyles(context).homeCardText,
-                        ),
-                      ],
+                    const SizedBox(height: 4),
+                    Text(
+                      'Calculate your pace, arrange your race',
+                      style: Theme.of(context).textTheme.bodySmall,
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
-                MyCustomSlider(
-                  value: dataController.distance!,
-                  minValue: RaceType.t1000m.distance,
-                  maxValue: RaceType.t100k.distance,
-                  onChanged: (value) => dataController.setDistance(value),
-                ),
-              ],
+              ),
             ),
           ),
-          Tile(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                DefaultTabController(
-                    length: 2,
-                    initialIndex: dataController.getTabInitialIndex(),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          TabBar(
-                            labelColor: const Color(0xff6750a4),
-                            indicatorColor: const Color(0xff6750a4),
-                            unselectedLabelColor: Colors.grey,
-                            onTap: (value) => dataController.setTabMode(value),
-                            tabs: [
-                              Tab(
-                                  text: MinimalLocalizations.of(context)
-                                      .estimateFinishTime),
-                              Tab(
-                                  text:
-                                      '${MinimalLocalizations.of(context).pace}(${MinimalLocalizations.of(context).getL10nByKey(dataController.unit!.unit3)})')
-                            ],
-                          ),
-                          Container(
-                              height: 240, //height of TabBarView
-                              decoration: const BoxDecoration(
-                                  border: Border(
-                                      top: BorderSide(
-                                          color: Colors.grey, width: 0.5))),
-                              child: TabBarView(children: <Widget>[
-                                Container(
-                                  child: showPicker(
-                                    isInlinePicker: true,
-                                    value: Time(
-                                      hour: dataController
-                                          .getFinishedHourMinuteTime()
-                                          .hour,
-                                      minute: dataController
-                                          .getFinishedHourMinuteTime()
-                                          .minute,
-                                    ),
-                                    onChange: (value) =>
-                                        dataController.setFinishedTime(value),
-                                    minuteInterval: TimePickerInterval.ONE,
-                                    iosStylePicker: true,
-                                    minHour: 0,
-                                    displayHeader: false,
-                                    isOnChangeValueMode: true,
-                                    accentColor: const Color(0xff6750a4),
-                                    maxHour: 23,
-                                    hourLabel: MinimalLocalizations.of(context)
-                                        .hourLabel,
-                                    minuteLabel:
-                                        MinimalLocalizations.of(context)
-                                            .minuteLabel,
-                                    is24HrFormat: true,
-                                    focusMinutePicker: true,
-                                    dialogInsetPadding:
-                                        const EdgeInsets.symmetric(
-                                            horizontal: 0.0, vertical: 0.0),
-                                    context: context,
-                                  ),
-                                ),
-                                Container(
-                                  child: showPicker(
-                                    isInlinePicker: true,
-                                    value: Time(
-                                      hour: dataController
-                                          .getPaceMinuteSecondTime()
-                                          .hour,
-                                      minute: dataController
-                                          .getPaceMinuteSecondTime()
-                                          .minute,
-                                    ),
-                                    onChange: (value) =>
-                                        dataController.setPace(value),
-                                    minuteInterval: TimePickerInterval
-                                        .ONE, // Changed from MinuteInterval.ONE
-                                    iosStylePicker: true,
-                                    minHour: 0,
-                                    blurredBackground: true,
-                                    displayHeader: false,
-                                    isOnChangeValueMode: true,
-                                    accentColor: const Color(0xff6750a4),
-                                    maxHour: 10,
-                                    hourLabel: MinimalLocalizations.of(context)
-                                        .minuteLabel,
-                                    minuteLabel:
-                                        MinimalLocalizations.of(context)
-                                            .secondsLabel,
-                                    is24HrFormat: true,
-                                    focusMinutePicker: true,
-                                    dialogInsetPadding:
-                                        const EdgeInsets.symmetric(
-                                            horizontal: 0.0, vertical: 0.0),
-                                    context: context,
-                                  ),
-                                ),
-                              ]))
-                        ]))
-              ],
+          // GPX Converter Tile
+          InkWell(
+            onTap: () => _showGpxConverterOptions(context),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.transform, size: 48),
+                    const SizedBox(height: 8),
+                    Text(
+                      'GPX Converter',
+                      style: Theme.of(context).textTheme.titleMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Convert a GPX to any format you need',
+                      style: Theme.of(context).textTheme.bodySmall,
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        tooltip: MinimalLocalizations.of(context).calculate,
-        heroTag: 'fab',
-        icon: const Icon(Icons.calculate),
-        label: Text(MinimalLocalizations.of(context).calculate),
-        onPressed: () {
-          Calculator calculator = Calculator(
-            unit: dataController.unit!,
-            raceType: dataController.raceType!,
-            distance: dataController.distance!,
-            tabMode: dataController.getTabMode(),
-            pace: dataController.getPaceMinuteSecondTime(),
-            etf: dataController.getFinishedHourMinuteTime(),
-          );
+    );
+  }
 
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ResultPage(
-                  distance: dataController.distanceFormatted(),
-                  unit: calculator.unit,
-                  raceType: calculator.raceType,
-                  estimateTimeFinished: calculator.estimatedTimeFinished(true),
-                  averagePace: calculator.averagePace(),
-                  splits: calculator.splits()),
-            ),
-          );
-        },
-      ),
+  void _showGpxConverterOptions(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.file_present),
+                title: const Text('GPX to CSV'),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const GpxToCsvPage()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.fitness_center),
+                title: const Text('GPX to FIT'),
+                onTap: () {
+                  Navigator.pop(context);
+                  // TODO: 导航到 GPX to FIT 页面
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.map),
+                title: Text('GPX to KML'),
+                onTap: () {
+                  // Handle GPX to KML conversion
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.map_outlined),
+                title: Text('GPX to KMZ'),
+                onTap: () {
+                  // Handle GPX to KMZ conversion
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.picture_as_pdf),
+                title: Text('GPX to PDF'),
+                onTap: () {
+                  // Handle GPX to PDF conversion
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

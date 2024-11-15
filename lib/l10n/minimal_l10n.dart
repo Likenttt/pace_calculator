@@ -16,7 +16,7 @@ class MinimalLocalizations {
 
   static const _localizedValues = <String, Map<String, String>>{
     'en': {
-      'title': 'Pace Calculator',
+      'title': 'Pacelator Toolbox',
       'Light Mode': 'Light Mode',
       'Results': 'Results',
       'hhMMSS': 'HH:MM:SS',
@@ -58,7 +58,7 @@ class MinimalLocalizations {
       'shareMessage': 'Pacelator by Newrathon. Download It Now!',
     },
     'zh': {
-      'title': 'Pacelator 配速计算器',
+      'title': 'Pacelator 工具箱',
       'unit': '单位',
       'splits': '计圈',
       'lapNo': '圈数',
