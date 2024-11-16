@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:macro_calculator/utils/textStyles.dart';
+import 'package:pacelator_toolbox/utils/textStyles.dart';
 
-import 'package:macro_calculator/widgets/tile.dart';
+import 'package:pacelator_toolbox/widgets/tile.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class FooterTile extends StatelessWidget {

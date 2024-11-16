@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:macro_calculator/utils/gpx/csv_writer.dart';
-import 'package:macro_calculator/utils/gpx/gpx_reader.dart';
+import 'package:pacelator_toolbox/utils/gpx/csv_writer.dart';
+import 'package:pacelator_toolbox/utils/gpx/gpx_reader.dart';
 
 void main() {
   group('CsvWriter', () {

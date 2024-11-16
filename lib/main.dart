@@ -1,9 +1,9 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:macro_calculator/controllers/data_controller.dart';
-import 'package:macro_calculator/controllers/theme_controller.dart';
-import 'package:macro_calculator/pages/home_page.dart';
+import 'package:pacelator_toolbox/controllers/data_controller.dart';
+import 'package:pacelator_toolbox/controllers/theme_controller.dart';
+import 'package:pacelator_toolbox/pages/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:macro_calculator/utils/color_schemes.dart';
+import 'package:pacelator_toolbox/utils/color_schemes.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 

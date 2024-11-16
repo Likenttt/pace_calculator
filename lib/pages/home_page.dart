@@ -1,11 +1,11 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:macro_calculator/controllers/theme_controller.dart';
-import 'package:macro_calculator/pages/pace_calculator_page.dart';
-import 'package:macro_calculator/utils/helpers.dart';
+import 'package:pacelator_toolbox/controllers/theme_controller.dart';
+import 'package:pacelator_toolbox/pages/pace_calculator_page.dart';
+import 'package:pacelator_toolbox/utils/helpers.dart';
 import 'package:provider/provider.dart';
-import 'package:macro_calculator/pages/gpx_converter/gpx_to_csv_page.dart';
+import 'package:pacelator_toolbox/pages/gpx_converter/gpx_to_csv_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:macro_calculator/pages/results_page.dart';
-import 'package:macro_calculator/utils/enums.dart';
-import 'package:macro_calculator/utils/number_format.dart';
+import 'package:pacelator_toolbox/pages/results_page.dart';
+import 'package:pacelator_toolbox/utils/enums.dart';
+import 'package:pacelator_toolbox/utils/number_format.dart';
 
 class Calculator {
   final double distance;

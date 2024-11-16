@@ -1,7 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:macro_calculator/utils/enums.dart';
-import 'package:macro_calculator/utils/helpers.dart';
+import 'package:pacelator_toolbox/utils/enums.dart';
+import 'package:pacelator_toolbox/utils/helpers.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class MyDropDownMenu<T> extends StatelessWidget {

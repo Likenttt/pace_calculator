@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:macro_calculator/utils/enums.dart';
-import 'package:macro_calculator/widgets/footer_tile.dart';
-import 'package:macro_calculator/widgets/header_tile.dart';
-import 'package:macro_calculator/widgets/result_tile.dart';
-import 'package:macro_calculator/widgets/split_tile.dart';
+import 'package:pacelator_toolbox/utils/enums.dart';
+import 'package:pacelator_toolbox/widgets/footer_tile.dart';
+import 'package:pacelator_toolbox/widgets/header_tile.dart';
+import 'package:pacelator_toolbox/widgets/result_tile.dart';
+import 'package:pacelator_toolbox/widgets/split_tile.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';

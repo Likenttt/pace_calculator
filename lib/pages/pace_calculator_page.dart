@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:macro_calculator/controllers/theme_controller.dart';
-import 'package:macro_calculator/data/calculator.dart';
-import 'package:macro_calculator/pages/results_page.dart';
-import 'package:macro_calculator/utils/helpers.dart';
-import 'package:macro_calculator/utils/textStyles.dart';
-import 'package:macro_calculator/widgets/tile.dart';
+import 'package:pacelator_toolbox/controllers/theme_controller.dart';
+import 'package:pacelator_toolbox/data/calculator.dart';
+import 'package:pacelator_toolbox/pages/results_page.dart';
+import 'package:pacelator_toolbox/utils/helpers.dart';
+import 'package:pacelator_toolbox/utils/textStyles.dart';
+import 'package:pacelator_toolbox/widgets/tile.dart';
 import 'package:provider/provider.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
-import 'package:macro_calculator/controllers/data_controller.dart';
-import 'package:macro_calculator/utils/enums.dart';
-import 'package:macro_calculator/widgets/my_drop_down_menu.dart';
-import 'package:macro_calculator/widgets/slider.dart';
+import 'package:pacelator_toolbox/controllers/data_controller.dart';
+import 'package:pacelator_toolbox/utils/enums.dart';
+import 'package:pacelator_toolbox/widgets/my_drop_down_menu.dart';
+import 'package:pacelator_toolbox/widgets/slider.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 

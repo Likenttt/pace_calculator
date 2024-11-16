@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:macro_calculator/utils/enums.dart';
+import 'package:pacelator_toolbox/utils/enums.dart';
 import 'package:flutter/material.dart';
 
 class DataController extends ChangeNotifier {
