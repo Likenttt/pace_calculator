@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'dart:io';
+import '../../utils/gpx/gpx_reader.dart';
+import '../../utils/gpx/csv_writer.dart';
 
 class GpxToCsvPage extends StatefulWidget {
   const GpxToCsvPage({super.key});
@@ -22,7 +25,6 @@ class _GpxToCsvPageState extends State<GpxToCsvPage> {
       setState(() {
         selectedFilePath = result.files.single.path;
       });
-      // TODO: 处理GPX到CSV的转换
     }
   }
 
@@ -47,8 +49,57 @@ class _GpxToCsvPageState extends State<GpxToCsvPage> {
               Text('selectedFile'.tr(args: [selectedFilePath ?? ''])),
               const SizedBox(height: 16),
               ElevatedButton.icon(
-                onPressed: () {
-                  // TODO: 实现转换功能
+                onPressed: () async {
+                  final messenger = ScaffoldMessenger.of(context);
+                  try {
+                    // Read GPX file
+                    final gpxReader = GpxReader();
+                    final gpxContent =
+                        await File(selectedFilePath!).readAsString();
+                    final gpx = gpxReader.fromString(gpxContent);
+
+                    // Convert to CSV
+                    final csvWriter = CsvWriter();
+                    final csvContent = csvWriter.asString(gpx);
+
+                    // Get original filename without extension
+                    final originalFileName =
+                        selectedFilePath!.split(Platform.pathSeparator).last;
+                    final nameWithoutExtension =
+                        originalFileName.replaceAll(RegExp(r'\.gpx$'), '');
+                    final newFileName =
+                        '${nameWithoutExtension}_converted_by_pacelator.csv';
+
+                    // Ask user for save location
+                    final result = await FilePicker.platform.saveFile(
+                      dialogTitle: 'saveCsvFile'.tr(),
+                      fileName: newFileName,
+                      type: FileType.custom,
+                      allowedExtensions: ['csv'],
+                    );
+
+                    if (result != null) {
+                      // Save the file
+                      final file = File(result);
+                      await file.writeAsString(csvContent);
+
+                      // Show success message
+                      if (mounted) {
+                        messenger.showSnackBar(
+                          SnackBar(
+                              content: Text('fileConvertedSuccessfully'.tr())),
+                        );
+                      }
+                    }
+                  } catch (e) {
+                    if (mounted) {
+                      messenger.showSnackBar(
+                        SnackBar(
+                            content: Text('errorConvertingFile'
+                                .tr(args: [e.toString()]))),
+                      );
+                    }
+                  }
                 },
                 icon: const Icon(Icons.transform),
                 label: Text('convertToCsv'.tr()),

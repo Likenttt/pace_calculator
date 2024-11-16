@@ -54,5 +54,8 @@
 	"distanceUnit:unknown": "未知",
 	"Pace": "配速",
 	"Seconds Label": "秒",
-	"shareMessage": "Pacelator，即刻下载"
+	"shareMessage": "Pacelator，即刻下载",
+	"saveCsvFile": "保存 CSV 文件",
+	"errorConvertingFile": "转换文件时出错: $1",
+	"fileConvertedSuccessfully": "文件转换并保存成功"
 }

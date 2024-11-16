@@ -53,5 +53,8 @@
 	"distanceUnit:statute": "Statute",
 	"distanceUnit:unknown": "Unknown",
 	"Seconds Label": "Seconds",
-	"shareMessage": "Pacelator by Newrathon. Download It Now!"
+	"shareMessage": "Pacelator by Newrathon. Download It Now!",
+	"saveCsvFile": "Save CSV File",
+	"errorConvertingFile": "Error converting file: $1",
+	"fileConvertedSuccessfully": "File converted and saved successfully"
 }
