@@ -5,11 +5,11 @@ import 'package:pacelator_toolbox/widgets/tile.dart';
 
 class ResultTile extends StatelessWidget {
   const ResultTile({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
     required this.units,
-  }) : super(key: key);
+  });
 
   final String title;
   final String value;

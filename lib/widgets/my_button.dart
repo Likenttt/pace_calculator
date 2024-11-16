@@ -7,12 +7,12 @@ class MyButton extends StatelessWidget {
   final bool selected;
   final IconData icon;
   const MyButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.onTap,
     required this.title,
     this.selected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

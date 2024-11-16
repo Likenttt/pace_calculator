@@ -5,9 +5,9 @@ import 'package:pacelator_toolbox/widgets/tile.dart';
 
 class HeaderTile extends StatelessWidget {
   const HeaderTile({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
   final String title;
   @override
   Widget build(BuildContext context) {

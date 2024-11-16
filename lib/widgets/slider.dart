@@ -6,12 +6,12 @@ class MyCustomSlider extends StatelessWidget {
   final double value;
   final Function(double) onChanged;
   const MyCustomSlider({
-    Key? key,
+    super.key,
     required this.minValue,
     required this.maxValue,
     required this.value,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

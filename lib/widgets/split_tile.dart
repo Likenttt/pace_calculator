@@ -8,11 +8,11 @@ import 'package:easy_localization/easy_localization.dart';
 
 class SplitTile extends StatelessWidget {
   const SplitTile({
-    Key? key,
+    super.key,
     required this.title,
     required this.unit,
     required this.splits,
-  }) : super(key: key);
+  });
 
   final String title;
   final DistanceUnit unit;

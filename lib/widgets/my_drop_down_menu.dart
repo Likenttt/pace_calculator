@@ -9,11 +9,11 @@ class MyDropDownMenu<T> extends StatelessWidget {
   final List<T> items;
   final Function(T?) onChanged;
   const MyDropDownMenu({
-    Key? key,
+    super.key,
     required this.value,
     required this.items,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   String _getText(T value) {
     return value.toString().split('.').last.firstCapital();
