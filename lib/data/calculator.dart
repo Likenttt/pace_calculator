@@ -25,7 +25,7 @@ class Calculator {
     if (needLeadingZero) {
       return "${formatNumLeftPadding0(etfMap['hour']!)}:${formatNumLeftPadding0(etfMap['minute']!)}:${formatNumLeftPadding0(etfMap['second']!)}";
     } else {
-      return "${etfMap['hour'] == 0 ? '' : formatNumLeftPadding0(etfMap['hour']!) + ':'}${formatNumLeftPadding0(etfMap['minute']!)}:${formatNumLeftPadding0(etfMap['second']!)}";
+      return "${etfMap['hour'] == 0 ? '' : '${formatNumLeftPadding0(etfMap['hour']!)}:'}${formatNumLeftPadding0(etfMap['minute']!)}:${formatNumLeftPadding0(etfMap['second']!)}";
     }
   }
 
@@ -78,7 +78,7 @@ class Calculator {
 
   String averagePace() {
     Map<String, int> paceMap = getPace();
-    return "${paceMap['hour'] == 0 ? '' : formatNumLeftPadding0(paceMap['hour']!) + ':'}${formatNumLeftPadding0(paceMap['minute']!)}:${formatNumLeftPadding0(paceMap['second']!)}";
+    return "${paceMap['hour'] == 0 ? '' : '${formatNumLeftPadding0(paceMap['hour']!)}:'}${formatNumLeftPadding0(paceMap['minute']!)}:${formatNumLeftPadding0(paceMap['second']!)}";
   }
 
   String getLastSplitTime(int beforeSplitNum) {
@@ -93,7 +93,7 @@ class Calculator {
     int hours = (lastSplitInSecond ~/ 3600);
     int minutes = (lastSplitInSecond % 3600) ~/ 60;
     int seconds = lastSplitInSecond % 3600 % 60;
-    return "${hours == 0 ? '' : formatNumLeftPadding0(hours) + ':'}${formatNumLeftPadding0(minutes)}:${formatNumLeftPadding0(seconds)}";
+    return "${hours == 0 ? '' : '${formatNumLeftPadding0(hours)}:'}${formatNumLeftPadding0(minutes)}:${formatNumLeftPadding0(seconds)}";
   }
 
   List<RunSplit> splits() {
@@ -131,6 +131,6 @@ class Calculator {
     int hours = (cumulativeSecond ~/ 3600);
     int minutes = (cumulativeSecond % 3600) ~/ 60;
     int seconds = cumulativeSecond % 3600 % 60;
-    return "${hours == 0 ? '' : formatNumLeftPadding0(hours) + ':'}${formatNumLeftPadding0(minutes)}:${formatNumLeftPadding0(seconds)}";
+    return "${hours == 0 ? '' : '${formatNumLeftPadding0(hours)}:'}${formatNumLeftPadding0(minutes)}:${formatNumLeftPadding0(seconds)}";
   }
 }

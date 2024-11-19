@@ -2,10 +2,10 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:pacelator_toolbox/controllers/theme_controller.dart';
+import 'package:pacelator_toolbox/pages/gpx_converter/gpx_converter_page.dart';
 import 'package:pacelator_toolbox/pages/pace_calculator_page.dart';
 import 'package:pacelator_toolbox/utils/helpers.dart';
 import 'package:provider/provider.dart';
-import 'package:pacelator_toolbox/pages/gpx_converter/gpx_to_csv_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -112,7 +112,10 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const GpxToCsvPage()),
+                      builder: (context) => const GpxConverterPage(
+                        targetFormat: GpxConvertFormat.csv,
+                      ),
+                    ),
                   );
                 },
               ),
@@ -121,7 +124,14 @@ class _HomePageState extends State<HomePage> {
                 title: Text('gpxToFit'.tr()),
                 onTap: () {
                   Navigator.pop(context);
-                  // TODO: 导航到 GPX to FIT 页面
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GpxConverterPage(
+                        targetFormat: GpxConvertFormat.fit,
+                      ),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -136,6 +146,14 @@ class _HomePageState extends State<HomePage> {
                 title: Text('gpxToKmz'.tr()),
                 onTap: () {
                   Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GpxConverterPage(
+                        targetFormat: GpxConvertFormat.kmz,
+                      ),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -143,6 +161,14 @@ class _HomePageState extends State<HomePage> {
                 title: Text('gpxToPdf'.tr()),
                 onTap: () {
                   Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GpxConverterPage(
+                        targetFormat: GpxConvertFormat.pdf,
+                      ),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -150,6 +176,14 @@ class _HomePageState extends State<HomePage> {
                 title: Text('gpxToTcx'.tr()),
                 onTap: () {
                   Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GpxConverterPage(
+                        targetFormat: GpxConvertFormat.tcx,
+                      ),
+                    ),
+                  );
                 },
               ),
               ListTile(
