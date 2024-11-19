@@ -20,13 +20,13 @@ class MyDropDownMenu<T> extends StatelessWidget {
   }
 
   String getMenuText(T value, BuildContext context) {
-    switch (T) {
-      case RaceType _:
+    switch (value.runtimeType) {
+      case RaceType:
         return (value as RaceType).l10nKey.tr();
-      case DistanceUnit _:
+      case DistanceUnit:
         return (value as DistanceUnit).l10nKey.tr();
       default:
-        return _getText(value);
+        return _getText(value).tr();
     }
   }
 

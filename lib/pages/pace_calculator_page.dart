@@ -28,7 +28,7 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('title'.tr()),
+        title: Text('paceCalculatorTitle'.tr()),
         actions: [
           IconButton(
             tooltip: isThemeDark(context) ? 'lightMode'.tr() : 'darkMode'.tr(),
@@ -62,7 +62,7 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'raceType'.tr(),
+                  'Race Type'.tr(),
                   style: MyTextStyles(context).cardTitle,
                 ),
                 MyDropDownMenu<RaceType>(
@@ -121,11 +121,11 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                               Tab(text: 'estimateFinishTime'.tr()),
                               Tab(
                                   text:
-                                      '${'pace'.tr()}(${dataController.unit!.unit3.tr()})')
+                                      '${'Pace'.tr()}(${dataController.unit!.unit3.tr()})')
                             ],
                           ),
                           Container(
-                              height: 240, //height of TabBarView
+                              height: 220, //height of TabBarView
                               decoration: const BoxDecoration(
                                   border: Border(
                                       top: BorderSide(
