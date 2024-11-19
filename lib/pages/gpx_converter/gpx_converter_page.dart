@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:pacelator_toolbox/pages/pace_calculator_page.dart';
 import 'package:pacelator_toolbox/utils/gpx/gpx_converter.dart';
+import 'package:pacelator_toolbox/utils/helpers.dart';
 
 enum GpxConvertFormat { csv, fit, kml, kmz, pdf, tcx, coordinates }
 
@@ -43,7 +45,9 @@ class _GpxConverterPageState extends State<GpxConverterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('gpxTo${widget.targetFormat.name.toUpperCase()}'.tr()),
+        title: Text(
+            'gpxTo${widget.targetFormat.name.toLowerCase().firstCapital()}'
+                .tr()),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -84,7 +88,9 @@ class _GpxConverterPageState extends State<GpxConverterPage> {
                   }
                 },
                 icon: const Icon(Icons.transform),
-                label: Text('convertTo${widget.targetFormat.name}'.tr()),
+                label: Text(
+                    'convertTo${widget.targetFormat.name.toLowerCase().firstCapital()}'
+                        .tr()),
               ),
             ],
           ],

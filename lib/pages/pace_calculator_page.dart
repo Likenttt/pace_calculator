@@ -41,8 +41,7 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
           ),
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(6.0),
+      body: Column(
         children: [
           //! second container
           Tile(
@@ -124,7 +123,10 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                                       '${'Pace'.tr()}(${dataController.unit!.unit3.tr()})')
                             ],
                           ),
-                          SizedBox(
+                          Container(
+                              color: Theme.of(context)
+                                  .scaffoldBackgroundColor, // 使用主题背景色
+
                               height: 240, //height of TabBarView
                               // decoration: const BoxDecoration(
                               //     border: Border(
@@ -132,7 +134,12 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                               //             color: Colors.grey, width: 0.2))),
                               child: TabBarView(children: <Widget>[
                                 Container(
+                                  color: Theme.of(context)
+                                      .scaffoldBackgroundColor, // 使用主题背景色
                                   child: showPicker(
+                                    backgroundColor: Theme.of(context)
+                                        .scaffoldBackgroundColor, // 使用主题背景色
+
                                     contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 0, vertical: 0),
                                     isInlinePicker: true,
@@ -165,6 +172,9 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                                 ),
                                 Container(
                                   child: showPicker(
+                                    backgroundColor: Theme.of(context)
+                                        .scaffoldBackgroundColor, // 使用主题背景色
+
                                     contentPadding: const EdgeInsets.symmetric(
                                         horizontal: 0, vertical: 0),
                                     isInlinePicker: true,

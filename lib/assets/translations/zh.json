@@ -15,7 +15,7 @@
 	"gpxToTcx": "GPX 转 TCX",
 	"gpxCoordinateConverter": "GPX 坐标转换器",
 	"selectGpxFile": "选择 GPX 文件",
-	"selectedFile": "已选择文件: $1",
+	"selectedFile": "已选择文件: {}",
 	"convertToCsv": "转换为 CSV",
 	"unit": "单位",
 	"splits": "计圈",
@@ -57,6 +57,6 @@
 	"secondsLabel": "秒",
 	"shareMessage": "Pacelator，即刻下载",
 	"saveCsvFile": "保存 CSV 文件",
-	"errorConvertingFile": "转换文件时出错: $1",
+	"errorConvertingFile": "转换文件时出错: {}",
 	"fileConvertedSuccessfully": "文件转换并保存成功"
 }

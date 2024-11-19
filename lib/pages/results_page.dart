@@ -58,7 +58,7 @@ class ResultPage extends StatelessWidget {
         units: 'hhMMSS'.tr(),
       ),
       ResultTile(
-        title: 'pace'.tr(),
+        title: 'Pace'.tr(),
         value: averagePace,
         units: unit.unit3.tr(),
       ),

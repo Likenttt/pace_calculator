@@ -16,7 +16,7 @@
 	"gpxToTcx": "GPX to TCX",
 	"gpxCoordinateConverter": "GPX Coordinate Converter",
 	"selectGpxFile": "Select a GPX File",
-	"selectedFile": "Selected file: $1",
+	"selectedFile": "Selected file: {}",
 	"convertToCsv": "Convert to CSV",
 	"hhMMSS": "HH:MM:SS",
 	"lapNo": "Lap No.",
@@ -56,6 +56,6 @@
 	"secondsLabel": "Seconds",
 	"shareMessage": "Pacelator by Newrathon. Download It Now!",
 	"saveCsvFile": "Save CSV File",
-	"errorConvertingFile": "Error converting file: $1",
+	"errorConvertingFile": "Error converting file: {}",
 	"fileConvertedSuccessfully": "File converted and saved successfully"
 }
