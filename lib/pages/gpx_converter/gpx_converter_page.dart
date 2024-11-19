@@ -84,8 +84,7 @@ class _GpxConverterPageState extends State<GpxConverterPage> {
                   }
                 },
                 icon: const Icon(Icons.transform),
-                label: Text(
-                    'convertTo${widget.targetFormat.name.toUpperCase()}'.tr()),
+                label: Text('convertTo${widget.targetFormat.name}'.tr()),
               ),
             ],
           ],

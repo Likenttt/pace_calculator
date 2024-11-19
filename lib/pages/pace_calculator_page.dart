@@ -124,15 +124,17 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                                       '${'Pace'.tr()}(${dataController.unit!.unit3.tr()})')
                             ],
                           ),
-                          Container(
-                              height: 220, //height of TabBarView
-                              decoration: const BoxDecoration(
-                                  border: Border(
-                                      top: BorderSide(
-                                          color: Colors.grey, width: 0.5))),
+                          SizedBox(
+                              height: 240, //height of TabBarView
+                              // decoration: const BoxDecoration(
+                              //     border: Border(
+                              //         top: BorderSide(
+                              //             color: Colors.grey, width: 0.2))),
                               child: TabBarView(children: <Widget>[
                                 Container(
                                   child: showPicker(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 0, vertical: 0),
                                     isInlinePicker: true,
                                     value: Time(
                                       hour: dataController
@@ -163,6 +165,8 @@ class _PaceCalculatorPageState extends State<PaceCalculatorPage> {
                                 ),
                                 Container(
                                   child: showPicker(
+                                    contentPadding: const EdgeInsets.symmetric(
+                                        horizontal: 0, vertical: 0),
                                     isInlinePicker: true,
                                     value: Time(
                                       hour: dataController
